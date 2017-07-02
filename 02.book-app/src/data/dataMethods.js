@@ -1,7 +1,7 @@
 import FakeData from './fakeData'
 
 export default class Data {
-  static getAllRestaurants () {
+  static getAllBooks () {
     return FakeData.Restaurants
   }
 
