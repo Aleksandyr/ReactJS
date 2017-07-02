@@ -1,11 +1,21 @@
-import FakeData from './fakeData'
+import fakeData from '/.fakeData'
 
-export default class Data {
-  static getAllBooks () {
-    return FakeData.Restaurants
-  }
+const data = {
+  getAllBooks: () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        fakeData.getAllBooks()
+      }, 1000)
+    })
+  },
 
-  static allAuthors () {
-    return FakeData.Authors
+  getAllAuthors: () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        fakeData.getAllAuthors()
+      }, 1000)
+    })
   }
 }
+
+export default data

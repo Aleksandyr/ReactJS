@@ -2,16 +2,16 @@ import Book from '../models/Book'
 import Comment from '../models/Comment'
 import Author from '../models/Author'
 
-class FakeData {
-  static Authors () {
+const fakeData = {
+  Authors: () => {
     return [
       new Author(0, 'pesho', 'some img'),
       new Author(1, 'tosho', 'some img'),
       new Author(2, 'gosho', 'some img')
     ]
-  }
+  },
 
-  static Book () {
+  Books: () => {
     return [
       new Book(0, 'first', 'some desc', this.Authors[0], 'http:\\unknown.com', 20, null),
       new Book(1, 'second', 'some desc', this.Authors[1], 'http:\\unknown.com', 22,
