@@ -7,42 +7,62 @@ class Books extends Component {
     super(props)
 
     this.state = {
-      booksDescending: []
+      books: []
     }
 
-    this.getSixBooksDescending = this.getSixBooksDescending.bind(this)
+    this.Data = new Data()
+
+    this.allBooks = this.allBooks.bind(this)
+    this.sortDescBooks = this.sortDescBooks.bind(this)
   }
 
   render () {
     // let getAllBooks = getAllBooks()
-    let booksDescending = this.state.booksDescending.slice(0, 6).map(book => {
-      return (
-        <div key={book.id}>
-          <Book title={book.title} auhor={book.author} id={book.id} />
-        </div>
-      )
-    })
+    // let sourceOfData = this.state.fatchedBooks.length !== 0 ? this.state.booksDescending : this.state.fatchedBooks
+    let booksDescending = this.state.books
+      .map(book => {
+        return (
+          <div key={book.id} className='col-sm-3'>
+            <Book title={book.title} auhor={book.author} id={book.id} />
+          </div>
+        )
+      })
 
     return (
-      <div>
+      <div className='row'>
         {booksDescending}
       </div>
     )
   }
 
   componentDidMount () {
-    this.getSixBooksDescending()
+    this.props.sortType === 'desc' ? this.sortDescBooks() : this.allBooks()
+
+    if (this.props.slicedTo) {
+      this.setState({
+        books: this.state.books.slice(0, Number.parseInt(this.props.slicedTo))
+      })
+    }
   }
 
-  getSixBooksDescending () {
-    Data.getAllBooks()
+  allBooks () {
+    this.Data.getAllBooks()
       .then(books => {
-        books.sort(function (a, b) {
-          return new Date(a.date) - new Date(b.date)
+        this.setState({
+          books: books
+        })
+      })
+  }
+
+  sortDescBooks () {
+    this.Data.getAllBooks()
+      .then(books => {
+        books.sort((a, b) => {
+          return new Date(b.creationDate) - new Date(a.creationDate)
         })
 
         this.setState({
-          booksDescending: books
+          books: books
         })
       })
   }

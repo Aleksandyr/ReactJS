@@ -1,13 +1,13 @@
 class Book {
-  constructor (id, title, description, author, image, price, date, comments) {
+  constructor (id, title, description, author, image, price, creationDate, comments) {
     this._id = id
     this._title = title
     this._description = description
     this._author = author
     this._image = image
     this._price = price
-    this._date = date
     this._comments = comments
+    this._creationDate = creationDate
   }
 
   get id () {
@@ -58,12 +58,12 @@ class Book {
     this._price = price
   }
 
-  get date () {
-    return this._date
+  get creationDate () {
+    return this._creationDate
   }
 
-  set date (date) {
-    this._date = date
+  set creationDate (creationDate) {
+    this._creationDate = creationDate
   }
 
   get comments () {

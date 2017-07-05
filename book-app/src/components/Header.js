@@ -47,7 +47,7 @@ class Header extends Component {
               <Link to='/'>Home</Link>
             </li>
             <li>
-              {/*<Link to='/move/add'>Add Movie</Link>*/}
+              <Link to='/books/all'>Books</Link>
             </li>
           </ul>
         </div>

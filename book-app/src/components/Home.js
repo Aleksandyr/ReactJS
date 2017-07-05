@@ -5,7 +5,7 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <Books />
+        <Books slicedTo='6' sortType='desc' />
       </div>
     )
   }
