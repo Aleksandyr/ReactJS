@@ -1,9 +1,13 @@
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher' 
 import userActions from '../actions/UserActions'
+import UserData from '../data/UserData'
 
 class UserStore extends EventEmitter {
   register (user) {
+    UserData
+      .register(user)
+      .then(data => this.emit(this.eventTypes.USER_REGISTERED, data))
 
   }
 
@@ -19,5 +23,10 @@ class UserStore extends EventEmitter {
 }
 
 let userStore = new UserStore()
+
+userStore.eventTypes = {
+  USER_REGISTERED: 'user_registered'
+}
+
 dispatcher.register(UserStore.handleAction(userStore))
 export default UserStore
