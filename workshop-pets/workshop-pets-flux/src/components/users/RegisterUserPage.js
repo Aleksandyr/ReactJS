@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+import FormHelpers from '../common/FormHelpers'
 import RegisterForm from './RegisterUserForm'
+import userActions from '../../actions/UserActions'
+import userStore from '../../stores/UserStore'
+import toastr from 'toastr'
 
 class RegisterUserPage extends Component {
   constructor (props) {
@@ -14,21 +18,62 @@ class RegisterUserPage extends Component {
       },
       error: ''
     }
+
+    this.handleUserRegistration = this.handleUserRegistration.bind(this)
+
+    userStore.on(
+      userStore.eventTypes.USER_REGISTERED,
+      this.handleUserRegistration)
+  }
+
+  componentWillUnmount () {
+    userStore.removeListener(
+      userStore.eventTypes.USER_REGISTERED,
+      this.handleUserRegistration)
   }
 
   handleUserChange (event) {
-    const target = event.target
-    const field = target.name
-    const value = target.value
-
-    const user = this.state.user
-    user[field] = value
-
-    this.setState({ user })
+    FormHelpers.handleFormChange.bind(this)(event, 'user')
   }
 
-  handleUserRegistration (event) {
+  handleUserForm (event) {
     event.preventDefault()
+    if(!this.validateUser()) {
+      return
+    }
+
+    userActions.register(this.state.user)
+  }
+
+  handleUserRegistration (data) {
+    if (!data.success) {
+      const firstError = 
+        data.errors ?
+        Object.keys(data.errors).map(k => data.errors[k])[0] :
+        data.message
+      this.setState({
+        error: firstError
+      })
+    } else {
+      toastr.success(data.message)
+      this.props.history.push('user/login')
+    }
+  } 
+
+  validateUser () {
+    const user = this.state.user;
+    let formIsValid = true
+    let error = ''
+
+    if (user.password !== user.confirmPassword) {
+      error = 'Password and confirmation password do not match'
+      formIsValid = false
+    }
+
+    if (error) {
+      this.setState({error})
+    }
+    return formIsValid
   }
 
   render () {
@@ -39,7 +84,7 @@ class RegisterUserPage extends Component {
           user={this.state.user}
           error={this.state.error}
           onChange={this.handleUserChange.bind(this)}
-          onSave={this.handleUserRegistration.bind(this)} />
+          onSave={this.handleUserForm.bind(this)} />
       </div>
     )
   }

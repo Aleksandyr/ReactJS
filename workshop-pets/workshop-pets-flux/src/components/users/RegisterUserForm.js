@@ -1,40 +1,32 @@
 import React from 'react'
+import Input from '../common/Input'
 
 const RegisterForm = (props) => (
   <form>
     <div>{props.error}</div>
-    <label htmlFor='email'>E-mail</label>
-    <input 
-      type='email'
-      name='email'
-      palceholder='E-mail'
-      value={props.user.email}
-      onChange={props.onChange }/>
-    <br />
-    <label htmlFor='name'>Name</label>
-    <input 
-      type='name'
+    <Input 
+     name='email'
+     placeholder='E-Mail'
+     type='email'
+     value={props.user.email}
+     onChange={props.onChange} />
+    <Input 
       name='name'
-      palceholder='Name'
+      placeholder='Name'
       value={props.user.name}
-      onChange={props.onChange }/>
-    <br />
-    <label htmlFor='password'>Passowrd</label>
-    <input 
-      type='password'
+      onChange={props.onChange}/>
+    <Input 
       name='password'
-      palceholder='Password'
-      value={props.user.password}
-      onChange={props.onChange }/>
-    <br />
-    <label htmlFor='confirmPassword'>Confirm Password</label>
-    <input 
       type='password'
+      placeholder='Password'
+      value={props.user.password}
+      onChange={props.onChange}/>
+    <Input 
       name='confirmPassword'
-      palceholder='Confirm Password'
+      type='password'
+      placeholder='Confirm Password'
       value={props.user.confirmPassword}
-      onChange={props.onChange }/>
-    <br />
+      onChange={props.onChange}/>
     <input type="submit" onClick={props.onSave} />
   </form>
 )

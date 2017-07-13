@@ -28,5 +28,5 @@ userStore.eventTypes = {
   USER_REGISTERED: 'user_registered'
 }
 
-dispatcher.register(UserStore.handleAction(userStore))
-export default UserStore
+dispatcher.register(userStore.handleAction.bind(userStore))
+export default userStore

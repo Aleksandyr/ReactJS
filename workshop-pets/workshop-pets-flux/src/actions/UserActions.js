@@ -1,6 +1,6 @@
 import dispatcher from '../dispatcher'
 
-const UserActions = {
+const userActions = {
   types: {
     REGISTER_USER: 'REGISTER_USER'
   },
@@ -13,4 +13,4 @@ const UserActions = {
   }
 }
 
-export default UserActions
+export default userActions
