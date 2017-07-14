@@ -11,7 +11,7 @@ const LoginUserForm = (props) => (
       value={props.user.email}
       onChange={props.onChange}/>
     <Input
-      name='passowrd'
+      name='password'
       type='password'
       placeholder='Password'
       value={props.user.password}

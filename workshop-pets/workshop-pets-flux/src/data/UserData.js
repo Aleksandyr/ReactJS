@@ -1,15 +1,31 @@
+const baseUrl = 'http://localhost:5000/auth'
+
+const getOptions = () => ({
+  method: 'POST',
+  mode: 'cors',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+})
+
+const handleJsonResponse = res => res.json()
+
 class UserData {
   static register (user) {
-    return window.fetch('http://localhost:5000/auth/signup', {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify(user),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => res.json())
+    const options = getOptions()
+    options.body = JSON.stringify(user)
+
+    return window.fetch(`${baseUrl}/signup`, options)
+      .then(handleJsonResponse)
+  }
+
+  static login (user) {
+    const options = getOptions()
+    options.body = JSON.stringify(user)
+
+    return window.fetch(`${baseUrl}/login`, options)
+      .then(handleJsonResponse)
   }
 }
 
