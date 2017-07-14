@@ -5,7 +5,7 @@ class LogoutPage extends Component {
   componentWillMount () {
     Auth.deauthenticateUser()
     Auth.removeUser()
-    this.props.history.push('/login')
+    this.props.history.push('/')
   }
 
   render () {
