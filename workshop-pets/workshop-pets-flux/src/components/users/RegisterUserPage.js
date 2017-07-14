@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FormHelpers from '../common/FormHelpers'
+import FormHelpers from '../common/forms/FormHelpers'
 import RegisterForm from './RegisterUserForm'
 import userActions from '../../actions/UserActions'
 import userStore from '../../stores/UserStore'

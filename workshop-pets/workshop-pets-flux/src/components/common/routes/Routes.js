@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import ListPetsPage from '../pets/ListPetsPage'
-import RegisterUserPage from '../users/RegisterUserPage'
-import LoginUserPage from '../users/LoginUserPage'
+import ListPetsPage from '../../pets/ListPetsPage'
+import RegisterUserPage from '../../users/RegisterUserPage'
+import LoginUserPage from '../../users/LoginUserPage'
 
 const Routes = () => (
   <Switch>

@@ -5,7 +5,11 @@ class Auth {
 
   static getUser () {
     const userJson = window.localStorage.getItem('user')
-    return JSON.parse(userJson)
+    if (userJson) {
+      return JSON.parse(userJson)
+    }
+
+    return {}
   }
 
   static removeUser () {
