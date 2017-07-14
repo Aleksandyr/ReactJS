@@ -55,7 +55,6 @@ class LoginUserPage extends Component {
       toastr.success(data.message)
       this.props.history.push('/')
     }
-    console.log(data)
   }
 
   render () {
