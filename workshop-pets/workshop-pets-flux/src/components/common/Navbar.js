@@ -33,6 +33,7 @@ class Navbar extends Component {
       { Auth.isUserAuthenticated() ? (
         <div>
           <span>{this.state.username}</span>
+          <Link to='/pets/add'>Add Pet</Link>
           <Link to='/users/logout'>Logout</Link>
         </div>
       ) : (

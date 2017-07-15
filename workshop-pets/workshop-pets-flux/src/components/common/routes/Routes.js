@@ -5,6 +5,7 @@ import ListPetsPage from '../../pets/ListPetsPage'
 import RegisterUserPage from '../../users/RegisterUserPage'
 import LoginUserPage from '../../users/LoginUserPage'
 import LogoutPage from '../../users/LogoutPage'
+import AddPetsPage from '../../pets/AddPetsPage'
 
 const Routes = () => (
   <Switch>
@@ -12,6 +13,7 @@ const Routes = () => (
     <Route path='/users/register' component={RegisterUserPage} />
     <Route path='/users/login' component={LoginUserPage} />
     <PrivateRoute path='/users/logout' component={LogoutPage} />
+    <PrivateRoute path='/pets/add' component={AddPetsPage} />
   </Switch>
 )
 
