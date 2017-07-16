@@ -4,8 +4,10 @@ class FormHelpers {
     const field = target.name
     const value = target.value
 
-    const state = this.state[stateField]
-    state[field] = value
+    let state = this.state[stateField]
+    typeof(state) === 'object' ?
+      state[field] = value:
+      state = value
 
     this.setState({ [stateField]: state })
   }

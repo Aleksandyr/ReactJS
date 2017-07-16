@@ -10,6 +10,10 @@ class UserData {
   static login (user) {
     return Data.post(`${baseUrl}/login`, user)
   }
+
+  static myCars () {
+    return Data.get(`cars/mine`, true)
+  }
 }
 
 export default UserData

@@ -33,6 +33,8 @@ class Navbar extends Component {
       { Auth.isUserAuthenticated() ? (
         <div>
           <span>{this.state.username}</span>
+          <Link to='/cars/create'>Add Car</Link>
+          <Link to='/cars/myprofile'>My Profile</Link>
           <Link to='/users/logout'>Logout</Link>
         </div>
       ) : (
@@ -41,6 +43,9 @@ class Navbar extends Component {
           <Link to='/users/login'>Login</Link>
         </div>
       )}
+      <div>
+        <Link to='/cars/all'>All Cars</Link>
+      </div>
     </div>
     )
   }

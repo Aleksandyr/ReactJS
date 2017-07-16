@@ -3,7 +3,8 @@ import dispatcher from '../dispatcher'
 const userActions = {
   types: {
     REGISTER_USER: 'REGISTER_USER',
-    LOGIN_USER: 'LOGIN_USER'
+    LOGIN_USER: 'LOGIN_USER',
+    MY_CARS: 'MY_CARS'
   },
 
   register (user) {
@@ -16,6 +17,11 @@ const userActions = {
     dispatcher.dispatch({
       type: this.types.LOGIN_USER,
       user
+    })
+  },
+  myCars () {
+    dispatcher.dispatch({
+      type: this.types.MY_CARS
     })
   }
 }

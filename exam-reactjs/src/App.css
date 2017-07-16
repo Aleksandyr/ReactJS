@@ -23,6 +23,23 @@
   padding-top: 5px;
 }
 
+.statistics_page div {
+  display: inline-block
+}
+
+.car_list_item {
+  padding-top: 25px;
+}
+
+.cars_list div img {
+  width: 250px;
+  height: 250px;
+}
+
+.search div {
+  display: inline-block;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
