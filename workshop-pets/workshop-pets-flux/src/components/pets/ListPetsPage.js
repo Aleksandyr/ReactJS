@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import queryString from 'query-string'
+import {Link} from 'react-router-dom'
 import petActions from '../../actions/PetActions'
 import petStore from '../../stores/PetStore'
 
@@ -64,7 +65,9 @@ class ListPetsPage extends Component {
     let pets = 'No available pets'
     if (this.state.pets.length > 0) {
       pets = this.state.pets.map(pet => (
-        <div key={pet.id}>{pet.id} {pet.name}</div>
+        <div key={pet.id}>{pet.id} {pet.name}
+          <Link to={`pet/details/${pet.id}`}>More Details</Link>
+        </div>
       ))
     }
 
