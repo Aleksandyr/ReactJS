@@ -42,7 +42,15 @@ class ListPetsPage extends Component {
   }
 
   goToPrevPage () {
+    let page = this.state.page
+    if (page === 1) {
+      return
+    }
 
+    page--
+    this.setState({ page })
+    petActions.all(page)
+    this.props.history.push(`/?page=${page}`)
   }
 
   goToNextPage () {
@@ -57,8 +65,8 @@ class ListPetsPage extends Component {
       page
     })
 
-    this.props.history.push(`/?page=${this.state.page}`)
     petActions.all(page)
+    this.props.history.push(`/?page=${page}`)
   }
 
   render () {
