@@ -47,10 +47,7 @@ class RegisterUserPage extends Component {
 
   handleUserRegistration (data) {
     if (!data.success) {
-      const firstError = 
-        data.errors ?
-        Object.keys(data.errors).map(k => data.errors[k])[0] :
-        data.message
+      const firstError = FormHelpers.getFirstError(data)
       this.setState({
         error: firstError
       })

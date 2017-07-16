@@ -46,8 +46,9 @@ class LoginUserPage extends Component {
 
   handleUserLogin (data) {
     if (!data.success) {
+      const firstError = FormHelpers.getFirstError(data)
       this.setState({
-        error: data.message
+        error: firstError
       })
     } else {
       Auth.authenticateUser(data.token)

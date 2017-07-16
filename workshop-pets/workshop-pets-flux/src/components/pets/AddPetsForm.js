@@ -27,16 +27,16 @@ const AddPetsFrom = (props) => (
     </select>
   </div>
   <Input 
-    name='imageUrl'
+    name='image'
     placeholder='Image Url'
-    value={props.pet.imageUrl}
+    value={props.pet.image}
     onChange={props.onChange}/>
   <Input 
     name='breed'
     placeholder='Breed'
     value={props.pet.breed}
     onChange={props.onChange}/>
-  <input type="submit" value='Add' />
+  <input type="submit" value='Add' onClick={props.onSave} />
   </form>
 )
 
