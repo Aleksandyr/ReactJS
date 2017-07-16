@@ -6,6 +6,9 @@ import PetData from '../data/PetData'
 class PetStore extends EventEmitter {
   all (page) {
     page = page || 1
+    PetData
+      .all(page)
+      .then(data => this.emit(this.eventTypes.PETS_FETCHED, data))
   }
   addPet (pet) {
     PetData
@@ -19,6 +22,10 @@ class PetStore extends EventEmitter {
         this.addPet(action.pet)
         break
       }
+      case petActions.types.ALL_PETS: {
+        this.all(action.page)
+        break
+      }
       default: break
     }
   }
@@ -27,7 +34,8 @@ class PetStore extends EventEmitter {
 let petStore = new PetStore()
 
 petStore.eventTypes = {
-  ADD_PET: 'add_pet'
+  ADD_PET: 'add_pet',
+  PETS_FETCHED: 'all_pets'
 }
 
 dispatcher.register(petStore.handleAction.bind(petStore))
